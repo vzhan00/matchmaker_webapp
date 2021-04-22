@@ -3,8 +3,10 @@ post = {"mmr": "1000"}
 # delete_many = db.ian.delete_many({})
 names = ["ian", "liam", "will", "nicky", "steve", "vevey", "yuuki", "aaron", "erik", "cam"]
 def add_user(name, db):
-    col = db[name]
-    col.insert_one(post)
+    #print(db.list_collection_names())
+    if name not in db.list_collection_names():
+        col = db[name]
+        col.insert_one(post)
 
 def add_collections(db):
     for i in names:
@@ -21,13 +23,11 @@ def find_docs(db):
         print(i)
 
 def find_last_document(db, col):
-    sorted_list = db[col].find().sort("_id", -1).limit(1)
+    if db[col].count() > 0:
+        sorted_list = db[col].find().sort("_id", -1).limit(1)
 
-    #print(int(sorted_list[0]["mmr"]) + 3)
-    return sorted_list
+        return sorted_list
 
-    # for i in sorted_list:
-    #     print(i)
 
 #add_collections(client.mmr)
 #delete_documents_in_all(client.mmr)

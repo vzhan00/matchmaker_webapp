@@ -1,12 +1,16 @@
 import matplotlib
 import utils as op
 from django.utils.crypto import get_random_string
-from main import client
+from main import mongo
 import pymongo
 
-client = pymongo.MongoClient(
-    "mongodb+srv://bobjoe:abc@cluster0.j9y1e.mongodb.net/test?retryWrites=true&w=majority"
-)
+# client = pymongo.MongoClient(
+#     "mongodb+srv://bobjoe:abc@cluster0.j9y1e.mongodb.net/test?retryWrites=true&w=majority"
+# )
+
+client = mongo.cx
+
+print(client)
 
 # red
 blue7 = {"top": "aaron", "jng": "will", "mid": "duncan", "adc": "nicky", "sup": "ian"}
@@ -121,10 +125,13 @@ team2_result = 0
 def ladder_ranking():
     # change to mmr
     db = client.mmr
+    print()
     rankings = {}
     for i in db.list_collection_names():
         # print(int(float(op.find_last_document(db, i)[0]["mmr"])))
-        rankings[i] = int(float(op.find_last_document(db, i)[0]["mmr"]))
+
+        if db[i].count() > 0:
+            rankings[i] = int(float(op.find_last_document(db, i)[0]["mmr"]))
 
     rankings_dict = rankings
     sorted_rankings = dict(sorted(rankings.items(), key=lambda x: x[1], reverse=True))
