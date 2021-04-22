@@ -43,7 +43,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 **Note: Custom script added by vzhan00**
 
-Starts the Flask api at http://127.0.0.1:5000/ on development server.
+Starts the Flask API at http://127.0.0.1:5000/ on development server. React app uses this server as a proxy server, any information sent to a certain URL that doesn't exist for our React app will redirect to our proxy server, calling the API according to the URL sent. Make sure to always have unique endpoints for our API compared to our React app.
 
 ## Learn More
 
