@@ -2,6 +2,8 @@
 
 ## Backend
 
+pip install pipenv
+
 cd flask-backend
 
 pipenv shell activates the python virtual environment 
@@ -26,7 +28,7 @@ Install MongoDb
 
 Install MongoDb Compass to view database
 
-Hosted on localhost:27017
+Server hosted on is localhost:27017
 
 ## TODO
 
