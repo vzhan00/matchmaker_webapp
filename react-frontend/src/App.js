@@ -1,7 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [ranking, setRanking] = useState(0);
+
+  // [] parameter only cause useEffect when ranking changes
+  useEffect(() => {
+    fetch('/rankings').then(res => res.json()).then(data => setRanking(data));
+    console.log(ranking);
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,14 +18,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          {Object.keys(ranking).map(key => <p>{key}: { ranking[key] }</p>)}
+        </div>
       </header>
     </div>
   );
