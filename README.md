@@ -22,13 +22,16 @@ npm start to start application
 
 ## Database Management System
 
-install MongoDb
+Install MongoDb
 
 Install MongoDb Compass to view database
 
 Hosted on localhost:27017
 
-## TODO:
+## TODO
+
 Finish API
+
 Start React Frontend
+
 Implement login and queue system
