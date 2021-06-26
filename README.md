@@ -1,5 +1,6 @@
 # Inhouse Matchmaker
 
+
 ## Backend
 
 pip install pipenv
@@ -37,3 +38,5 @@ Finish API
 Start React Frontend
 
 Implement login and queue system
+
+Use Redis as a sessions storage system/cache to implement a message service and drafting tool. Use multi-threading for this too.
